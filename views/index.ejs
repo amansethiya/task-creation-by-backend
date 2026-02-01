@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>re-visiting key concept</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="main w-full min-h-screen bg-black text-[#fff] p-10">
+      <h1 class="text-4xl mb-10 text-center">Revisiting key concept</h1>
+      <div class="form mt-3 ">
+        <form action="/create" method="post" class="flex gap-3 justify-between bg-[#3B3838] p-2 rounded-2xl">
+          <input
+            class="block border-2 border-[#fff] p-2 rounded-2xl w-1/4"
+            type="text"
+            name="title"
+            id=""
+            placeholder="title goes here "
+          />
+          <textarea
+            class=" block border-2 border-[#fff] p-2 resize-none rounded-2xl w-1/1 overflow-hidden"
+            name="description"
+            placeholder="enter description here "
+            id=""
+          ></textarea>
+          <input
+            class=" border-3 border-double rounded-2xl w-1/6 cursor-pointer bg-[#38824F]"
+            type="submit"
+            value="create tasks"
+          />
+        </form>
+      </div>
+      <div
+        class="tasks mt-12 grid grid-cols-3  gap-8 "
+      >
+      <% if(files.length > 0){ %>
+        <% files.forEach(function(val){ %>
+            <div class="task  bg-[#3B3838] p-5 rounded-2xl border-2 flex flex-col gap-5">
+          <h2 class="text-3xl font-medium"><%=val %></h2>
+          <div class="flex gap-3 justify-between">
+          <a class="text-[17px] text-[#A6A6A6] font-medium underline cursor-pointer" href="/file/<%=val %>">
+            Read Now 
+          </a>
+          <a class="text-[10px] text-[#1A1F3D]   cursor-pointer" href="/edit/<%=val %>">
+            edit it 
+          </a>
+          <a class="text-[10px] text-[#824031]   cursor-pointer" href="/delete/<%=val %>">
+            delete task 
+          </a>
+          </div>
+        </div>
+         <% }) %>
+         <% } else{ %>
+            <h2 class="font-medium"> Currently No Task yet!</h2>
+          <% }%>
+
+      </div>
+    </div>
+  </body>
+</html>
